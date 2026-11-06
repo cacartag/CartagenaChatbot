@@ -1,0 +1,25 @@
+[project]
+name = "chatbot"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Cartagena, Christopher A A1C USAF (USA)", email = "christopher.cartagena.2@us.af.mil" }
+]
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+chatbot = "chatbot:main"
+
+[build-system]
+requires = ["uv_build>=0.13.7,<0.14.0"]
+build-backend = "uv_build"
+
+
+# Runtime dependencies: what the chatbot needs to actually run.
+dependencies = [
+    "anthropic",        # official Claude Python SDK
+    "python-dotenv",    # loads ANTHOPHIC_API_KEY from a .env file
+]
+
