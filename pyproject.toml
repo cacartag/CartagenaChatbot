@@ -23,3 +23,27 @@ dependencies = [
     "python-dotenv",    # loads ANTHOPHIC_API_KEY from a .env file
 ]
 
+# Tool configuration
+
+[tool.pytest.ini_options]
+pythonpaths = ["src"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+# E/F = pyflakes + pycodestyle errors, I = import sorting,
+# B = common bug patterns, UP = modernize old syntax
+select = ["E", "F", "I", "B", "UP"]
+
+
+
+
+
+
+
+
+
+
+
