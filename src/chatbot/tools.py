@@ -1,14 +1,16 @@
 import httpx
 import trafilatura
 from ddgs import DDGS
+from ddgs.exceptions import DDGSException
 
-MAX_CHARS = 4000    # keep results small so they don't flood the model's context
+MAX_CHARS = 10000    # keep results small so they don't flood the model's context
 
 def web_search(query: str) -> str:
     """Search the web and return the top results as plain text."""
-    results = DDGS().text(query, max_results=5)
-    if not results:
-        return "No results found."
+    try:
+        results = DDGS().text(query, max_results=5)
+    except DDGSException as error:
+        return f"Search failed ({error}). Try a different query or answer from pages already read."
     return "\n\n".join(
         f"Title: {r['title']}\nURL: {r['href']}\nSnippet: {r['body']}" for r in results
     )

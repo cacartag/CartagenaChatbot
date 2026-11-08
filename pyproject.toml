@@ -39,6 +39,11 @@ target-version = "py39"
 # B = common bug patterns, UP = modernize old syntax
 select = ["E", "F", "I", "B", "UP"]
 
+[dependency-groups]
+dev = [
+    "ruff>=0.17.4",
+]
+
 
 
 

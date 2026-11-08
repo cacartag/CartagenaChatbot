@@ -68,7 +68,14 @@ def main():
                 console.print(f"[dim]→ {name}({args})[/]")  # show what it's doing
 
                 func = TOOL_FUNCTIONS.get(name)
-                result = func(**args) if func else f"Unknown tool: {name}"
+
+                if func is None:
+                    result = f"Unknown tool: {name}"
+                else:
+                    try:
+                        result = func(**args)
+                    except Exception as error:
+                        result = f"Tool error: {error}"
 
                 history.append({"role": "tool", "tool_call_id": call.id, "content": result})
 
