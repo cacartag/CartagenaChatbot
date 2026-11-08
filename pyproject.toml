@@ -6,8 +6,16 @@ readme = "README.md"
 authors = [
     { name = "Cartagena, Christopher A A1C USAF (USA)", email = "christopher.cartagena.2@us.af.mil" }
 ]
-requires-python = ">=3.11"
-dependencies = []
+requires-python = ">=3.9"
+dependencies = [
+    "anthropic",
+    "ddgs>=9.8.0",
+    "dotenv",
+    "httpx>=0.28.1",
+    "openai>=2.48.0",
+    "rich>=15.0.0",
+    "trafilatura>=2.0.0",
+]
 
 [project.scripts]
 chatbot = "chatbot:main"
@@ -17,12 +25,6 @@ requires = ["uv_build>=0.13.7,<0.14.0"]
 build-backend = "uv_build"
 
 
-# Runtime dependencies: what the chatbot needs to actually run.
-dependencies = [
-    "anthropic",        # official Claude Python SDK
-    "python-dotenv",    # loads ANTHOPHIC_API_KEY from a .env file
-]
-
 # Tool configuration
 
 [tool.pytest.ini_options]
@@ -30,7 +32,7 @@ pythonpaths = ["src"]
 
 [tool.ruff]
 line-length = 88
-target-version = "py311"
+target-version = "py39"
 
 [tool.ruff.lint]
 # E/F = pyflakes + pycodestyle errors, I = import sorting,
